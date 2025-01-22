@@ -119,7 +119,45 @@ unsigned char find_minimum(unsigned char* array, unsigned int size);
  *
  * @return sorted:      returns sorted array
  */
-unsigned char sort_array(unsigned char* array, unsigned int size);
+unsigned char* sort_array(unsigned char* array, unsigned int size);
 
 
+
+/**
+ * @brief Partition function for quickSort
+ *
+ * Partitions array around pivot point, used in quickSort
+ *
+ * @param array:        unsigned char pointer to n-element data array
+ * @param low:		index of smaller element
+ * @param high:		index of larger element
+ *
+ * @return split        returns split point
+ */
+int partition(unsigned char * array, int low, int high);
+
+
+/**
+ * @brief Swaps position of two elements in an array
+ *
+ * @param a:		first element to switch
+ * @param b:		second element to switch
+ *
+ * @return none         no return value
+ */
+void swap(unsigned char *a, unsigned char *b);
+
+
+/**
+ * @brief Quicksort algorithm
+ *
+ * Recursively sorts an array by swapping left and right sides around split point
+ *
+ * @param array:        unsigned char pointer to n-element data array
+ * @param low:          index of smaller element
+ * @param high:         index of larger element
+ *
+ * @return none         no return value
+ */
+void quickSort(unsigned char * array, int low, int high);
 #endif /* __STATS_H__ */

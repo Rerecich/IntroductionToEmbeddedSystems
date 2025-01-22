@@ -39,18 +39,33 @@ void main() {
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
 
-  printf("test");
+  printf("Original array: ");
+  print_array(test, SIZE);
+
+  printf("Sorted array: ");
+  sort_array(test, SIZE);
+  print_array(test, SIZE);
+
 }
 
 void print_statistics(unsigned char* array, unsigned int size)
 {
-	/*Implementation*/
+	
 }	
 
 
 void print_array(unsigned char* array, unsigned int size)
 {
-	/*Implementaion*/
+	int i;
+
+	for (i = 0; i < size; i++) {
+		printf("%u", *(array + i));
+		if (i < size - 1) {
+			printf(", ");
+		}
+	}
+	printf("\n");
+
 }
 
 unsigned char find_median(unsigned char* array, unsigned int size)
@@ -73,8 +88,44 @@ unsigned char find_minimum(unsigned char* array, unsigned int size)
 	return -1;
 }
 
-unsigned char sort_array(unsigned char* array, unsigned int size)
+unsigned char* sort_array(unsigned char* array, unsigned int size)
 {
-	return *array;
+	/*Using the quicksort algorithm*/
+	quickSort(array, 0, size - 1);
+
+	return array;
 }
 
+/* Quicksort Helper Functions*/
+/*----------------------------------------------------------------*/
+void swap (unsigned char *a, unsigned char *b)
+{
+	unsigned char temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+int partition(unsigned char *array, int low, int high)
+{
+	unsigned char pivot = array[high]; //last item in array
+	int left = low - 1; //index of smaller element
+	
+	for (int right = low; right < high; right++) {
+		if (array[right] <= pivot) {
+			left++;
+			swap(&array[left], &array[right]);
+		}
+	}
+	swap(&array[left + 1], &array[high]);
+
+	return left+1;
+}
+
+void quickSort(unsigned char *array, int low, int high)
+{
+	if (low < high) {
+		int split = partition(array, low, high);
+		quickSort(array, low, split-1);
+		quickSort(array, split + 1, high);
+	}
+}
