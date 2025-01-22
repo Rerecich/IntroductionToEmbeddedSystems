@@ -13,7 +13,9 @@
  * @brief Implementation file for C1M1
  *
  * First assignment of Introduction to Embedded Systems; Includes eight
- * functions to analyze array of unsigned char data items and report various analytics
+ * functions to analyze array of unsigned char data items and report various
+ * analytics. The focus is practice with version control and command line
+ * interface, not optimization of functions.
  *
  * @author Sarah Rerecich
  * @date January 21st 2025
@@ -39,18 +41,34 @@ void main() {
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
 
-  printf("Original array: ");
-  print_array(test, SIZE);
-
-  printf("Sorted array: ");
-  sort_array(test, SIZE);
-  print_array(test, SIZE);
+  print_statistics(test, SIZE);
 
 }
 
 void print_statistics(unsigned char* array, unsigned int size)
 {
-	
+	printf("\n---------------------------------------\n");
+	printf("-------------Array Statistics----------\n");
+	printf("---------------------------------------\n");
+
+	printf("Original array: \n");
+	print_array(array, size);
+	printf("\nSorted array: \n");
+	sort_array(array, size);
+	print_array(array, size);
+
+	/*Run everything*/
+	unsigned char median = find_median(array, size);
+	unsigned char minimum = find_minimum(array, size);
+	unsigned char maximum = find_maximum(array, size);
+	unsigned char mean = find_mean(array, size);
+
+	printf("\nMinimum = %u\n", minimum);
+	printf("\nMaximum = %u\n", maximum);
+	printf("\nMedian = %u\n", median);
+	printf("\nMean = %u\n", mean);
+	printf("---------------------------------------\n");
+
 }	
 
 
@@ -70,22 +88,49 @@ void print_array(unsigned char* array, unsigned int size)
 
 unsigned char find_median(unsigned char* array, unsigned int size)
 {
-	return -1;
+	int index = size/2;
+	unsigned char median;
+	unsigned char temp[2];
+
+	sort_array(array, size);
+
+	if(size % 2 == 0) {
+		temp[0] = array[index - 1];
+		temp[1] = array[index];
+		median = find_mean(temp, 2);
+	}
+
+	else {
+		median = array[index];
+	}
+
+
+	return median;
 }
 
 unsigned char find_mean(unsigned char* array, unsigned int size)
 {
-	return -1;
+	int i = 0;
+	int sum = 0;
+
+	for (i = 0; i < size; i++) {
+		sum += array[i];
+	}
+
+	unsigned char mean = (unsigned char)((sum + (size / 2)) / size); // Rounding
+	return mean;
 }
 
 unsigned char find_maximum(unsigned char* array, unsigned int size)
 {
-	return -1;
+	sort_array(array, size);
+	return array[size - 1];
 }
 
 unsigned char find_minimum(unsigned char* array, unsigned int size)
 {
-	return -1;
+	sort_array(array, size);
+	return array[0];
 }
 
 unsigned char* sort_array(unsigned char* array, unsigned int size)

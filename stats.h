@@ -14,6 +14,8 @@
  *
  * First assignment of Introduction to Embedded Systems; Includes function
  * headers and descriptions for all functions listed in stats.c
+ * The focus is practice with version control and command line
+ * interface, not optimization of functions.
  *
  * @author Sarah Rerecich
  * @date January 21st 2025
@@ -34,7 +36,7 @@
  *
  * @return void		returns nothing, prints statistics to console
  */
-void print_statistics(unsigned char * array, unsigned int size);
+void print_statistics(unsigned char *array, unsigned int size);
 
 
 
@@ -48,7 +50,7 @@ void print_statistics(unsigned char * array, unsigned int size);
  *
  * @return void         returns nothing, prints statistics to console
  */
-void print_array(unsigned char * array, unsigned int size);
+void print_array(unsigned char *array, unsigned int size);
 
 
 
@@ -62,7 +64,7 @@ void print_array(unsigned char * array, unsigned int size);
  *
  * @return median:      returns median, prints result to console
  */
-unsigned char find_median(unsigned char* array, unsigned int size);
+unsigned char find_median(unsigned char *array, unsigned int size);
 
 
 
@@ -76,7 +78,7 @@ unsigned char find_median(unsigned char* array, unsigned int size);
  *
  * @return mean:        returns mean, prints result to console
  */
-unsigned char find_mean(unsigned char* array, unsigned int size);
+unsigned char find_mean(unsigned char *array, unsigned int size);
 
 
 
@@ -90,7 +92,7 @@ unsigned char find_mean(unsigned char* array, unsigned int size);
  *
  * @return maximum:     returns maximum value, prints result to console
  */
-unsigned char find_maximum(unsigned char* array, unsigned int size);
+unsigned char find_maximum(unsigned char *array, unsigned int size);
 
 
 
@@ -104,7 +106,7 @@ unsigned char find_maximum(unsigned char* array, unsigned int size);
  *
  * @return minimum:     returns minimum, prints result to console
  */
-unsigned char find_minimum(unsigned char* array, unsigned int size);
+unsigned char find_minimum(unsigned char *array, unsigned int size);
 
 
 
@@ -119,7 +121,7 @@ unsigned char find_minimum(unsigned char* array, unsigned int size);
  *
  * @return sorted:      returns sorted array
  */
-unsigned char* sort_array(unsigned char* array, unsigned int size);
+unsigned char * sort_array(unsigned char *array, unsigned int size);
 
 
 
@@ -134,7 +136,7 @@ unsigned char* sort_array(unsigned char* array, unsigned int size);
  *
  * @return split        returns split point
  */
-int partition(unsigned char * array, int low, int high);
+int partition(unsigned char *array, int low, int high);
 
 
 /**
@@ -159,5 +161,5 @@ void swap(unsigned char *a, unsigned char *b);
  *
  * @return none         no return value
  */
-void quickSort(unsigned char * array, int low, int high);
+void quickSort(unsigned char *array, int low, int high);
 #endif /* __STATS_H__ */
